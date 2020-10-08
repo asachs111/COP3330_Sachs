@@ -11,9 +11,22 @@ public class Pyramid extends Shape3D {
     }
 
     public double getArea(){
-        return 0;
+        double retval = sidefacelh();
+        retval += sidefacewh();
+        retval += base();
+        return retval;
     }
+    private double sidefacelh(){
+        return length * Math.sqrt(Math.pow(width/2, 2)+Math.pow(height,2));
+    }
+    private double sidefacewh(){
+        return width * Math.sqrt(Math.pow(length/2, 2)+Math.pow(height,2));
+    }
+    private double base(){
+        return length * width;
+    }
+
     public double getVolume(){
-        return 0;
+        return (length * width * height)/3;
     }
 }

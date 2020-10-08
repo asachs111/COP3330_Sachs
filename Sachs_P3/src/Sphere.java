@@ -7,9 +7,9 @@ public class Sphere extends Shape3D {
     }
 
     public double getArea(){
-        return 0;
+        return 4 * 3.141592 * Math.pow(radius,2);
     }
     public double getVolume(){
-        return 0;
+        return (4 * 3.141592/3) * Math.pow(radius,3);
     }
 }
