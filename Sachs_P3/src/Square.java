@@ -1,0 +1,12 @@
+public class Square extends Shape2D {
+    private final double length;
+
+    public Square(double length) {
+        super("square");
+        this.length = length;
+    }
+
+    public double getArea(){
+        return (length * length);
+    }
+}
