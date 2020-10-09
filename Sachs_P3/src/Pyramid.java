@@ -2,12 +2,14 @@ public class Pyramid extends Shape3D {
     private final double length;
     private final double width;
     private final double height;
+    private final String name;
 
     public Pyramid(double length, double width, double height) {
-        super("pyramid");
+        super();
         this.length = length;
         this.width = width;
         this.height = height;
+        this.name = "pyramid";
     }
 
     public double getArea(){
@@ -29,4 +31,6 @@ public class Pyramid extends Shape3D {
     public double getVolume(){
         return (length * width * height)/3;
     }
+
+    public String getName(){return name;}
 }

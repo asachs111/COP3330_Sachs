@@ -1,9 +1,11 @@
 public class Sphere extends Shape3D {
     private final double radius;
+    private final String name;
 
     public Sphere(double radius) {
-        super("sphere");
+        super();
         this.radius = radius;
+        this.name = "sphere";
     }
 
     public double getArea(){
@@ -12,4 +14,6 @@ public class Sphere extends Shape3D {
     public double getVolume(){
         return (4 * 3.141592/3) * Math.pow(radius,3);
     }
+
+    public String getName(){return name;}
 }
