@@ -36,8 +36,9 @@ public class TaskItem {
         this.title = title;
         this.description = description;
         this.date = date;
-        this.completed = Boolean.getBoolean(bool);
+        this.completed = bool.equals("***");
     }
+
     private boolean validtitle(String title){
         return title.length() >= 1;
     }
@@ -69,7 +70,6 @@ public class TaskItem {
             int day = Integer.parseInt(date.substring(8, 10));
             Date date1 = new Date( year, month, day);
             this.date = date1;
-            System.out.println(date1.toString());
         } catch (NumberFormatException ex){
             throw new InvaliddateException("WARNING: Invalid date input; task not created");
         }
@@ -84,12 +84,13 @@ public class TaskItem {
     }
 
     public String ezFormat(){
-        return (title + "\n" + description + "\n" + ezdate() + "\n" + completed );
+        return (title + "\n" + description + "\n" + ezdate() + "\n" + complete() + "\n");
     }
 
-    private String ezdate(){
+    public String ezdate(){
         return date.getYear() + " " + date.getMonth() + " " + date.getDate();
     }
+
     public String complete(){
         if(completed){
             return "***";
@@ -101,6 +102,13 @@ public class TaskItem {
     @Override
     public String toString(){
         return (" ["+ (date.getYear()+1900)+ "-" + (date.getMonth()+1) + "-" + date.getDate() + "] " + this.title + ": "+ this.description);
+    }
+
+    public String gettitle() {
+        return title;
+    }
+    public String getDescription() {
+        return description;
     }
 }
 

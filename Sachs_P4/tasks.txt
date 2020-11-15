@@ -1,5 +1,9 @@
-1
-Create new assignment
-Create assignment 4
-120 10 16
+2
+qwerty
+time1
+106 5 3
 false
+not qwerty
+time2
+109 5 3
+true

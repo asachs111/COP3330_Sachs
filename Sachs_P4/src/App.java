@@ -38,6 +38,7 @@ public class App {
                 "\n" +
                 ">");
         return input.nextInt();
+
     }
 
     private static void listmenu(int menu){
@@ -53,18 +54,31 @@ public class App {
         }
         while (listmenu !=8) {
             listmenu = listMenuresponse();
-
+            input.nextLine();
             switch (listmenu) {
                 case 1:
                     taskList.list();
                     break;
                 case 2:
-                    taskList.add();
+                    System.out.print("Task title:");
+                    String title = input.nextLine();
+                    System.out.print("Task description:");
+                    String description =  input.nextLine();
+                    System.out.print("Task due date (YYYY-MM-DD):");
+                    String date = input.nextLine();
+                    taskList.add(title,description,date);
                     break;
                 case 3:
                     taskList.list();
                     System.out.println("Which task will you edit?");
-                    taskList.edit(input.nextInt());
+                    int index = input.nextInt();
+                    System.out.print("\nEnter a new title for task " + index +": ");
+                    String title1 = input.nextLine();
+                    System.out.print("Enter a new description for task " + index +": ");
+                    String description2 =  input.nextLine();
+                    System.out.print("Enter a new task due date (YYYY-MM-DD) for task " + index +": ");
+                    String date3 = input.nextLine();
+                    taskList.edit(title1,description2,date3,index);
                     break;
                 case 4:
                     taskList.list();

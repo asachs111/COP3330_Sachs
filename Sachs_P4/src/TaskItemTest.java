@@ -6,7 +6,7 @@ class TaskItemTest {
 
     @Test
     public void creatingTaskItemFailsWithInvalidDueDate(){
-        assertThrows(InvalidtitleException.class, () -> new TaskItem("Title","Description","06-03-2001"));
+        assertThrows(InvaliddateException.class, () -> new TaskItem("Title","Description","06-03-2001"));
     }
     @Test
     public void creatingTaskItemFailsWithInvalidTitle(){
@@ -23,18 +23,21 @@ class TaskItemTest {
     @Test
     public void settingTaskItemDueDateFailsWithInvalidDate() throws InvaliddiscriptionException, InvaliddateException, InvalidtitleException {
         TaskItem task = new TaskItem("Title","Description","2001-06-03");
-        //assertThrows();
+        assertThrows(InvaliddateException.class, () -> task.setDate("20-06-03"));
     }
     @Test
-    public void settingTaskItemDueDateSucceedsWithValidDate(){
-        assertDoesNotThrow(() -> new TaskItem("Title","Description","2001-06-03"));
+    public void settingTaskItemDueDateSucceedsWithValidDate() throws InvaliddiscriptionException, InvaliddateException, InvalidtitleException {
+        TaskItem task = new TaskItem("Title","Description","2001-06-03");
+        assertDoesNotThrow(() -> task.setDate("2006-06-03"));
     }
     @Test
-    public void settingTaskItemTitleFailsWithInvalidTitle(){
-        //assertThrows(InvalidtitleException.class, () -> new TaskItem("Title","Description","21/-06-03"));
+    public void settingTaskItemTitleFailsWithInvalidTitle() throws InvaliddiscriptionException, InvaliddateException, InvalidtitleException {
+        TaskItem task = new TaskItem("Title","Description","2001-06-03");
+        assertThrows(InvalidtitleException.class, () -> task.settitle(""));
     }
     @Test
-    public void settingTaskItemTitleSucceedsWithValidTitle(){
-        assertDoesNotThrow(() -> new TaskItem("Title","Description","2001-06-03"));
+    public void settingTaskItemTitleSucceedsWithValidTitle() throws InvaliddiscriptionException, InvaliddateException, InvalidtitleException {
+        TaskItem task = new TaskItem("Title","Description","2001-06-03");
+        assertDoesNotThrow(() -> task.settitle("new title"));
     }
 }
