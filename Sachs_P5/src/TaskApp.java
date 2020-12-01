@@ -59,7 +59,7 @@ public class TaskApp {
             listmenu = listMenuresponse();
             switch (listmenu) {
                 case 1:
-                    taskList.list();
+                    taskList.view();
                     break;
                 case 2:
                     addtask();
@@ -68,7 +68,7 @@ public class TaskApp {
                     edittask();
                     break;
                 case 4:
-                    taskList.list();
+                    taskList.view();
                     System.out.println("Which task will you remove?");
                     taskList.remove(taskinput.nextInt());
                     break;
@@ -105,7 +105,7 @@ public class TaskApp {
     }
 
     private static void edittask() {
-        taskList.list();
+        taskList.view();
         System.out.println("Which task will you edit?");
         int index = taskinput.nextInt();
         taskinput.nextLine();

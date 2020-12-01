@@ -25,7 +25,7 @@ public class TaskList extends UserLists{
         }
     }
 
-    public void list() {
+    public void view() {
         System.out.println("Current Tasks\n" +
                 "-------------\n");
         for (int i = 0;i<TaskList.size();i++){
@@ -43,9 +43,8 @@ public class TaskList extends UserLists{
 
     public void edit(String title, String description, String date,int index) {
         try{
-            TaskList.get(index).settitle(title);
-            TaskList.get(index).setdiscription(description);
-            TaskList.get(index).setDate(date);
+            TaskItem task = new TaskItem(title,description,date);
+            TaskList.set(index,task);
         } catch (InvalidtitleException ex){
             System.out.println("WARNING: title must be at least 1 character long; task not created");
         } catch (InvaliddiscriptionException ex){

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ContactApp{
-    private static Scanner contactinput = new Scanner(System.in);
+    private static final Scanner contactinput = new Scanner(System.in);
     private static ContactList contactList = new ContactList();
 
     public static void main() {
@@ -18,7 +18,7 @@ public class ContactApp{
                     contactList = new ContactList();
                     System.out.println("Enter the filename to load:");
                    // contactList.inport(input.next());
-                    System.out.println("task list has been loaded");
+                    System.out.println("Contact list has been loaded");
                     listmenu();
                     break;
                 case 3:
@@ -31,17 +31,21 @@ public class ContactApp{
 
     private static void listmenu(){
         int listmenu = 0;
-        while (listmenu !=8) {
+        while (listmenu !=6) {
             listmenu = listMenuresponse();
             contactinput.nextLine();
             switch (listmenu) {
                 case 1:
+                    contactList.view();
                     break;
                 case 2:
+                    addcontact();
                     break;
                 case 3:
+                    editcontact();
                     break;
                 case 4:
+                    removecontact();
                     break;
                 case 5:
                     break;
@@ -50,6 +54,50 @@ public class ContactApp{
                 default:
                     System.out.println("Invalid response. Try again.");
             }
+        }
+    }
+
+    private static void removecontact() {
+        if (contactList.size() == 0){
+            System.out.println("you have no tasks to remove");
+        } else {
+            contactList.view();
+            System.out.println("\nWhich contact will you remove?");
+            int index = contactinput.nextInt();
+            contactinput.nextLine();
+            contactList.remove(index);
+        }
+    }
+
+    private static void addcontact() {
+        System.out.print("First name:");
+        String Firstname = contactinput.nextLine();
+        System.out.print("Last name:");
+        String Lastname = contactinput.nextLine();
+        System.out.print("Phone number (xxx-xxx-xxxx):");
+        String phone = contactinput.nextLine();
+        System.out.print("Email address (x@y.z):");
+        String email = contactinput.nextLine();
+        contactList.add(Firstname,Lastname,phone,email);
+    }
+
+    private static void editcontact() {
+        if (contactList.size() == 0){
+            System.out.println("you have no tasks to edit");
+        } else {
+            contactList.view();
+            System.out.println("\nWhich contact will you edit?");
+            int index = contactinput.nextInt();
+            contactinput.nextLine();
+            System.out.print("Enter a new first name for contact " + index + ":");
+            String Firstname = contactinput.nextLine();
+            System.out.print("Enter a new last name for contact " + index + ":");
+            String Lastname = contactinput.nextLine();
+            System.out.print("Enter a new phone number (xxx-xxx-xxxx) for contact " + index + ":");
+            String phone = contactinput.nextLine();
+            System.out.print("Enter a new email address (x@y.z) for contact" + index + ":");
+            String email = contactinput.nextLine();
+            contactList.edit(index, Firstname, Lastname, phone, email);
         }
     }
 

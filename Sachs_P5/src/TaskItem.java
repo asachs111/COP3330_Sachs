@@ -44,7 +44,7 @@ public class TaskItem extends item{
     }
 
     private boolean validdescription(String description){
-        return description.length() >= 1;
+        return description.length() >= 0;
     }
 
     public void settitle(String title) throws InvalidtitleException {
