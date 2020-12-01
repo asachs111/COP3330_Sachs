@@ -24,7 +24,7 @@ public class Contactitem extends item{
 
     }
 
-    private void setemail(String validate) throws Invalidemail {
+    public void setemail(String validate) throws Invalidemail {
 
         if(validate.contains("@") && validate.contains(".")){
             String preat =validate.substring(0,validate.indexOf('@'));
@@ -38,7 +38,7 @@ public class Contactitem extends item{
         }
     }
 
-    private void setphone(String validate) throws Invalidphone {
+    public void setphone(String validate) throws Invalidphone {
         if (validate.length() != 12 && validate.charAt(3) == '-' && validate.charAt(7) == '-'){
             throw new Invalidphone();
         } try{
@@ -52,11 +52,11 @@ public class Contactitem extends item{
         this.Phone=validate;
     }
 
-    private void setlastname(String validate) {
+    public void setlastname(String validate) {
         this.Lastname=validate;
     }
 
-    private void setfirstname(String validate) {
+    public void setfirstname(String validate) {
         this.Firstname=validate;
     }
 
@@ -65,7 +65,7 @@ public class Contactitem extends item{
         return a.isEmpty();
 
     }
-
+    @Override
     public String toString() {
         return ("Name: " + this.Firstname +" "+ this.Lastname +
                 "\nPhone: " + this.Phone +
@@ -76,6 +76,10 @@ public class Contactitem extends item{
         return null;
     }
 }
+
+
+
+
 class Minimumfieldsnotmet extends Throwable {
     public Minimumfieldsnotmet() {
         super();
