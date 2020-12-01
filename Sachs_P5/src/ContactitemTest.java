@@ -60,7 +60,11 @@ class ContactitemTest {
     }
     @Test
     public void testezFormat() throws Invalidphone, Minimumfieldsnotmet, Invalidemail {
-        Contactitem ci = new Contactitem("Adam","","","");
-        assertEquals("",ci.ezFormat());
+        Contactitem ci = new Contactitem("Adam","s","952-222-2222","a@b.com");
+        assertEquals("Adam\n" +
+                "s\n" +
+                "952-222-2222\n" +
+                "a@b.com\n",
+                ci.ezFormat());
     }
 }

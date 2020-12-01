@@ -17,7 +17,7 @@ public class ContactApp{
                 case 2 :
                     contactList = new ContactList();
                     System.out.println("Enter the filename to load:");
-                   // contactList.inport(input.next());
+                    contactList.inport(contactinput.next());
                     System.out.println("Contact list has been loaded");
                     listmenu();
                     break;
@@ -48,6 +48,9 @@ public class ContactApp{
                     removecontact();
                     break;
                 case 5:
+                    System.out.println("Whats the file name aweqwsdqw");
+                    String filename = contactinput.next();
+                    contactList.save(filename);
                     break;
                 case 6:
                     break;

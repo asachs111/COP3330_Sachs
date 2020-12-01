@@ -26,28 +26,37 @@ public class Contactitem extends item{
 
     public void setemail(String validate) throws Invalidemail {
 
-        if(validate.contains("@") && validate.contains(".")){
-            String preat =validate.substring(0,validate.indexOf('@'));
-            String postat =validate.substring(validate.indexOf('@')+1);
-            if (preat.isEmpty() || !postat.contains(".") || postat.substring(postat.indexOf('.')).isEmpty()){
+        if(validate.equals(" ")){
+            this.email = validate;
+        } else {
+            if (validate.contains("@") && validate.contains(".")) {
+                String preat = validate.substring(0, validate.indexOf('@'));
+                String postat = validate.substring(validate.indexOf('@') + 1);
+                if (preat.isEmpty() || !postat.contains(".") || postat.substring(postat.indexOf('.')).isEmpty()) {
+                    throw new Invalidemail();
+                }
+                this.email = validate;
+            } else {
                 throw new Invalidemail();
             }
-            this.email=validate;
-        } else {
-            throw new Invalidemail();
         }
     }
 
     public void setphone(String validate) throws Invalidphone {
-        if (validate.length() != 12 && validate.charAt(3) == '-' && validate.charAt(7) == '-'){
-            throw new Invalidphone();
-        } try{
-            int a = Integer.parseInt(validate.substring(0,3));
-            int b = Integer.parseInt(validate.substring(4,7));
-            int c = Integer.parseInt(validate.substring(8,12));
-            a=a+b+c;
-        }catch(Exception ex){
-            throw new Invalidphone();
+        if(validate.equals(" ")){
+            this.Phone = validate;
+        } else {
+            if (validate.length() != 12 && validate.charAt(3) == '-' && validate.charAt(7) == '-') {
+                throw new Invalidphone();
+            }
+            try {
+                int a = Integer.parseInt(validate.substring(0, 3));
+                int b = Integer.parseInt(validate.substring(4, 7));
+                int c = Integer.parseInt(validate.substring(8, 12));
+                a = a + b + c;
+            } catch (Exception ex) {
+                throw new Invalidphone();
+            }
         }
         this.Phone=validate;
     }
@@ -73,7 +82,7 @@ public class Contactitem extends item{
     }
 
     public String ezFormat() {
-        return null;
+        return Firstname + "\n" + Lastname+ "\n" +Phone+ "\n" +email+ "\n";
     }
 }
 

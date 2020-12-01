@@ -67,6 +67,7 @@ class ContactListTest {
     }
     @Test
     public void savedContactListCanBeLoaded(){
-        assertTrue(false);
+        ContactList contactList = new ContactList();
+        assertDoesNotThrow(() -> contactList.inport("contacts.txt"));
     }
 }
